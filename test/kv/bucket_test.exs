@@ -28,4 +28,13 @@ defmodule KV.BucketTest do
       Map.pop(dict, key)
     end)
   end
+
+  def put(bucket, key, value) do
+    GenServer.call(bucket, {:put, key, value})
+  end
+
+  def handle_call({:put, key, value}, _from, state) do
+    {:reply, :ok, Map.put(state, key, value)}
+  end
+
 end
