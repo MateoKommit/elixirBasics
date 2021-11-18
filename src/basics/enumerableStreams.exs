@@ -8,7 +8,7 @@ for n <- list_b do
   IO.puts(n)
 end
 
-list_c = Enum.map(1..5, fn x -> x*2 end)
+list_c = Enum.map(1..5, fn x -> x * 2 end)
 for n <- list_c do
   IO.puts(n)
 end
