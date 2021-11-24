@@ -40,6 +40,11 @@ defmodule KV.Registry do
     GenServer.cast(server, {:create, name})
   end
 
+  @spec delete(atom | pid | {atom, any} | {:via, atom, any}, any) :: :ok
+  def delete(server, name) do
+    GenServer.cast(server, {:delete, name})
+  end
+
   ## Defining Genserver Callbacks
 
   @impl true
@@ -56,8 +61,9 @@ defmodule KV.Registry do
   #   {:reply, Map.fetch(names, name), state}
   # end
 
+  @spec handle_cast({:create, any}, {atom, any}) :: {:noreply, {atom, any}}
   @impl true
-  def handle_call({:create, name}, {names, refs}) do
+  def handle_cast({:create, name}, {names, refs}) do
     case lookup(names, name) do
       {:ok, _pid} ->
         {:noreply, {names, refs}}

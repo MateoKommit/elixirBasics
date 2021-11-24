@@ -20,6 +20,14 @@ defmodule KV.Bucket do
     Agent.get(bucket, &Map.get(&1, key))
   end
 
+  @spec delete(atom | pid | {atom, any} | {:via, atom, any}, any) :: any
+  @doc """
+  Gets a value from the `bucket` by `key` and deletes it
+  """
+  def delete(bucket, key) do
+    Agent.get_and_update(bucket, &Map.pop(&1, key))
+  end
+
   @spec put(atom | pid | {atom, any} | {:via, atom, any}, any, any) :: :ok
   @doc """
   Puts the `value` for the given `key` in the `bucket`.
