@@ -17,7 +17,7 @@ defmodule KV.Bucket do
   Gets a value from the `bucket` by `key`.
   """
   def get(bucket, key) do
-    Agent.get(bucket, &Map.get(&1, key))
+    Agent.get(bucket, &Map.get(&1, key, "NOT FOUND"))
   end
 
   @spec delete(atom | pid | {atom, any} | {:via, atom, any}, any) :: any

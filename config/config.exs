@@ -9,6 +9,8 @@
 # move said applications out of the umbrella.
 import Config
 
+config :iex, default_prompt: ">>>"
+
 # Sample configuration:
 #
 #     config :logger, :console,
