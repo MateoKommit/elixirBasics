@@ -16,6 +16,8 @@ config :friends, Friends.Repo,
   hostname: "localhost",
   port: "5432"
 
+config :friends, ecto_repos: [Friends.Repo]
+
 config :iex, default_prompt: ">>>"
 
 # Sample configuration:
