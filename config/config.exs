@@ -9,6 +9,8 @@
 # move said applications out of the umbrella.
 import Config
 
+config :example_plug, cowboy_port: 8080
+
 config :friends, Friends.Repo,
   database: "friends_repo",
   username: "kommit",
